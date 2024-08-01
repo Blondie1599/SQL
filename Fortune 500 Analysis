@@ -63,5 +63,8 @@ VALUES
     
 # Assign all the companies in the Technology industry as "Paid Time Off Friendly", "acceptable", or "abysmal" based on the amount of paid time leave offered. 
 
+#lists the number of revenue highest to greatest in each industry. Only include industrie with more than of 191.00.
 
-#
+# Which companies have a avg_employee_tenure of at least 6 *and* at least revenue of $200?
+
+# Which company in the Technology industry has the least paid_time_off_days, and what's their paid_time_off_days?
