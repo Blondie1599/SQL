@@ -61,10 +61,19 @@ VALUES
     # Analysis: 
 
     
-# Assign all the companies in the Technology industry as "Paid Time Off Friendly", "acceptable", or "abysmal" based on the amount of paid time leave offered. 
-
+# Assign all the companies in the Technology industry as "Paid Time Off Friendly", "acceptable", or "abysmal" based on the amount of paid time off days offered. 
+  SELECT company_name,
+  CASE 
+      WHEN paid_time_off_days <= 20 THEN 'PTO Freindly' 
+      WHEN paid_time_off_days >= 16 THEN 'acceptable'     ******" RECHECK THIS"******
+      ELSE 'abysmal'
+ END as pto_friendly
+ FROM fortune_companies
+ WHERE industry='Technology';
+  
 #lists the number of revenue highest to greatest in each industry. Only include industrie with more than of 191.00.
-
+  SELECT 
 # Which companies have a avg_employee_tenure of at least 6 *and* at least revenue of $200?
-
+  SELECT
 # Which company in the Technology industry has the least paid_time_off_days, and what's their paid_time_off_days?
+  SELECT
