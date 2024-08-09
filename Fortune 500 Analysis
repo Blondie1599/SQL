@@ -62,19 +62,27 @@ VALUES
 
     
 # Assign all the companies in the Technology industry as "Paid Time Off Friendly", "acceptable", or "abysmal" based on the amount of paid time off days offered. 
-  SELECT company_name,
-  CASE 
-      WHEN paid_time_off_days <= 20 THEN 'PTO Freindly' 
-      WHEN paid_time_off_days >= 16 THEN 'acceptable'     ******" RECHECK THIS"******
-      ELSE 'abysmal'
- END as pto_friendly
+  SELECT company_name, paid_time_off_days,
+         CASE 
+             WHEN paid_time_off_days >= 20 THEN 'Paid Time Off Freindly' 
+             WHEN paid_time_off_days BETWEEN 10 AND 19 THEN 'Acceptable'
+             ELSE 'Abysmal'
+         END AS pto_friendly
  FROM fortune_companies
- WHERE industry='Technology';
+ WHERE industry = 'Technology';
   
-#lists the number of revenue highest to greatest in each industry. Only include industrie with more than of 191.00.
-  SELECT COUNT (revenue) industry
-  FROM
-# Which companies have a avg_employee_tenure of at least 6 *and* at least revenue of $200?
-  SELECT
-# Which company in the Technology industry has the least paid_time_off_days, and what's their paid_time_off_days?
-  SELECT
+# Find industries where the average number of employees is greater than 50,000 and the average revenue is greater than $200 billion:
+  SELECT industry, AVG(employees) AS avg_employees, AVG(revenue) AS avg_revenue
+  FROM fortune_companies
+  GROUP BY industry
+  HAVING AVG(employees0 > 50000 AND AVG(revenue) > 200.000;
+
+# Find the industries where the average revenue that is greater than $150 billion or the average number of paid time off days is greater than 20.
+  SELECT industry, AVG(revenue) AS AVG_revenue, AVG(paid_time_off_days) AS avg_paid_time_off
+  FROM fortune_companies
+  GROUP BY industry
+  HAVING AVG(revenue) > 150.00 OR AVG(paid_time_off_day) > 20;
+
+  # Find the total number of companies and the maximum number of emplyees for all companies.
+  SELECT COUNT(*) AS total_companies, MAX(employees) AS max_employees 
+  FROM fortune_companies;
